@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const practiceAreas = [
+  {
+    id: "commercial-litigation",
+    heading: "Commercial Litigation",
+    body: "Our firm handles a wide range of business and commercial law matters. We are experienced in navigating complex disputes, including breach of contract claims and counterclaim defense, to protect our clients' commercial interests.",
+    image: {
+      src: "/images/placeholders/litigation-image.jpg",
+      alt: "A modern courtroom with wooden gavel and law books, symbolizing commercial litigation."
+    }
+  },
+  {
+    id: "creditors-rights",
+    heading: "Creditors' Rights",
+    body: "We provide comprehensive services covering all stages of the collections process. From pre-suit actions and diligent litigation to strategic post-judgment collections, we work tirelessly to enforce and protect the rights of creditors.",
+    image: {
+      src: "/images/placeholders/creditors-rights-image.jpg",
+      alt: "A professional signing a legal document at a desk, representing creditors' rights enforcement."
+    }
+  },
+  {
+    id: "real-estate",
+    heading: "Real Estate Law",
+    body: "In addition to our litigation practice, The CKB Firm manages both commercial and residential real estate closings. We ensure a smooth and legally sound transaction process for our clients.",
+    image: {
+      src: "/images/placeholders/real-estate-image.jpg",
+      alt: "A set of house keys on a wooden table with a blueprint in the background, illustrating real estate law."
+    }
+  }
+];
+---
+
+<Layout
+  title="Legal Services | The CKB Firm"
+  description="Explore our core practice areas, including comprehensive services in commercial litigation, creditors' rights, and real estate law in Illinois."
+>
+  <main id="main-content">
+    <header class="page-header">
+      <div class="container">
+        <h1>Our Practice Areas</h1>
+        <p class="subtitle">Dedicated legal expertise for your business and property needs.</p>
+      </div>
+    </header>
+
+    <div class="practice-areas-container">
+      {practiceAreas.map((area, index) => (
+        <section id={area.id} class:list={["practice-area", { reverse: index % 2 !== 0 }]} aria-labelledby={`${area.id}-heading`}>
+          <div class="container">
+            <div class="practice-area-content">
+              <div class="text-column">
+                <h2 id={`${area.id}-heading`}>{area.heading}</h2>
+                <p>{area.body}</p>
+              </div>
+              <div class="image-column">
+                <img src={area.image.src} alt={area.image.alt} loading="lazy" decoding="async" width="500" height="350" />
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Page Header Styles */
+  .page-header {
+    background-color: var(--color-secondary, #333E48);
+    color: var(--color-background, #F5F5F5);
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #FFFFFF;
+  }
+
+  .page-header .subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Container Styles */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Practice Area Section Styles */
+  .practice-areas-container {
+    background-color: var(--color-background, #F5F5F5);
+  }
+
+  .practice-area {
+    padding: 5rem 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .practice-area:last-child {
+    border-bottom: none;
+  }
+
+  .practice-area-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .text-column {
+    flex: 1;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  .text-column h2 {
+    font-size: 2rem;
+    color: var(--color-primary, #B52B2C);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .text-column p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text, #666666);
+  }
+
+  .image-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-column img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+  }
+
+  /* Responsive and Layout Styles */
+  @media (min-width: 768px) {
+    .page-header h1 {
+      font-size: 3rem;
+    }
+
+    .practice-area-content {
+      flex-direction: row;
+      gap: 3rem;
+    }
+
+    .text-column {
+      text-align: left;
+    }
+
+    /* Alternating layout for desktop */
+    .practice-area.reverse .practice-area-content {
+      flex-direction: row-reverse;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .practice-area-content {
+      gap: 4rem;
+    }
+
+    .page-header {
+      padding: 5rem 1.5rem;
+    }
+  }
+</style>

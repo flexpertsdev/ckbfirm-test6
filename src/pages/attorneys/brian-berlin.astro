@@ -1,0 +1,128 @@
+---
+const pageTitle = "Brian C. Berlin | Creditors' Rights Attorney | The CKB Firm";
+const pageDescription = "View the profile of Brian C. Berlin, an experienced creditors' rights and real estate attorney at The CKB Firm, recognized by Super Lawyers.";
+
+const bio = {
+  body: "Brian C. Berlin has extensive experience in creditors' rights. His practice areas are centered on commercial litigation, collections, creditor/debtor actions, and real estate. Brian represents a number of large and medium-sized publicly traded and privately held businesses. He is a graduate of the University of Illinois with a degree in Political Science and earned his Juris Doctor from The John Marshall Law School. He has been recognized by Super Lawyers for his work in real estate, creditor debtor rights, and civil litigation.",
+  heading: "Brian C. Berlin",
+  subheading: "Attorney"
+};
+
+const headshot = {
+  src: "/images/placeholders/headshot-brian-berlin.jpg",
+  alt: "Headshot of Brian C. Berlin, Attorney at The CKB Firm"
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription}>
+    <style>
+        /* These would typically be in a global.css file */
+        :root {
+            --color-primary: #3D4C5C;
+            --color-secondary: #666666;
+            --color-accent: #CB333B;
+            --color-background: #F2F2F2;
+            --color-text: #333333;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <article class="attorney-profile">
+            <div class="profile-grid">
+                <div class="profile-image-wrapper">
+                    <img src={headshot.src} alt={headshot.alt} />
+                </div>
+                <div class="profile-text-content">
+                    <header>
+                        <h1>{bio.heading}</h1>
+                        <p class="subheading">{bio.subheading}</p>
+                    </header>
+                    <p>{bio.body}</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <style>
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            margin: 0;
+        }
+
+        main {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .attorney-profile {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Layout Pattern: two-column-image-left-text-right */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .profile-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .profile-text-content h1 {
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            margin: 0 0 0.25rem 0;
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .profile-text-content .subheading {
+            color: var(--color-secondary);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .profile-text-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Responsive and Accessible adjustments */
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .profile-image-wrapper {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .profile-text-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</body>
+</html>

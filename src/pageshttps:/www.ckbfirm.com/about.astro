@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const seo = {
+  title: "About The CKB Firm | Our Attorneys & Mission",
+  description: "Learn about the experienced attorneys at The CKB Firm, our professional affiliations, and our commitment to clients in Chicago."
+};
+
+const attorneys = [
+  {
+    name: "Michael Baim",
+    title: "Managing Partner",
+    image: "/images/placeholders/attorney-michael-baim.jpg"
+  },
+  {
+    name: "Patricia Lepak",
+    title: "Chief Compliance Officer",
+    image: "/images/placeholders/attorney-patricia-lepak.jpg"
+  },
+  {
+    name: "Brian Berlin",
+    title: "Senior Trial Attorney",
+    image: "/images/placeholders/attorney-brian-berlin.jpg"
+  }
+];
+
+const affiliations = [
+  "Commercial Law League of America (CLLA)",
+  "The National Creditors Bar Association (NARCA)",
+  "The American Lawyers Quarterly (ALQ)",
+  "Illinois Creditors Bar Association (ILCBA)",
+  "The General Bar",
+  "The Forwarder’s List"
+];
+---
+
+<Layout title={seo.title} description={seo.description}>
+  <main id="main-content">
+
+    <!-- Section 1: FirmMission -->
+    <section class="firm-mission-section">
+      <div class="container text-center">
+        <h1 class="section-heading">Our Firm</h1>
+        <p class="section-body">
+          The CKB Firm is a Chicago-based law firm specializing in creditors' rights and commercial litigation. Our mission is to provide exceptional legal collection services to our diverse client base, which includes banks, financial institutions, manufacturers, and distributors. We are committed to delivering personalized service and achieving positive outcomes through every stage of the legal process.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 2: AttorneyProfiles -->
+    <section class="attorney-profiles-section">
+      <div class="container">
+        <h2 class="section-heading text-center">Our Legal Team</h2>
+        <p class="section-body text-center">
+          Our legal team combines decades of experience and specialized knowledge to effectively represent our clients' interests.
+        </p>
+        <div class="profile-grid">
+          {attorneys.map(attorney => (
+            <article class="profile-card" aria-labelledby={`attorney-name-${attorney.name.split(' ').join('-')}`}>
+              <img
+                src={attorney.image}
+                alt={`Portrait of ${attorney.name}`}
+                class="profile-image"
+                width="300"
+                height="300"
+                loading="lazy"
+              />
+              <div class="profile-info">
+                <h3 id={`attorney-name-${attorney.name.split(' ').join('-')}`} class="profile-name">{attorney.name}</h3>
+                <p class="profile-title">{attorney.title}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Affiliations -->
+    <section class="affiliations-section">
+      <div class="container text-center">
+        <h2 class="section-heading">Professional Affiliations</h2>
+        <p class="section-body">
+          We are proud members of several prominent legal and commercial organizations, reflecting our commitment to the highest standards of our profession.
+        </p>
+        <div class="logo-cloud">
+          <ul class="affiliation-list" role="list">
+            {affiliations.map(name => (
+              <li class="affiliation-item">{name}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* General Section and Container Styles */
+  section {
+    padding: 4rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .section-heading {
+    font-size: 2.5rem;
+    color: var(--color-secondary, #333E48);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .section-body {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text, #666666);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Section 1: FirmMission */
+  .firm-mission-section {
+    background-color: var(--color-background, #F5F5F5);
+  }
+
+  /* Section 2: AttorneyProfiles */
+  .attorney-profiles-section {
+    background-color: #ffffff;
+  }
+
+  .attorney-profiles-section .section-body {
+    margin-bottom: 3rem;
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .profile-card {
+    background-color: var(--color-background, #F5F5F5);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .profile-info {
+    padding: 1.5rem;
+  }
+
+  .profile-name {
+    font-size: 1.5rem;
+    color: var(--color-secondary, #333E48);
+    margin: 0 0 0.5rem;
+  }
+
+  .profile-title {
+    font-size: 1rem;
+    color: var(--color-primary, #B52B2C);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  /* Section 3: Affiliations */
+  .affiliations-section {
+    background-color: var(--color-background, #F5F5F5);
+  }
+
+  .logo-cloud {
+    margin-top: 2.5rem;
+  }
+
+  .affiliation-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .affiliation-item {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text, #666666);
+    padding: 0.75rem 1.5rem;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    section {
+      padding: 3rem 1rem;
+    }
+
+    .section-heading {
+      font-size: 2rem;
+    }
+
+    .section-body {
+      font-size: 1rem;
+    }
+  }
+</style>

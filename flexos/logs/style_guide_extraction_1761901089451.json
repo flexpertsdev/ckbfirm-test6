@@ -1,0 +1,7 @@
+{
+  "step": "style_guide_extraction",
+  "timestamp": "2025-10-31T08:58:09.451Z",
+  "model": "gemini-2.5-flash",
+  "prompt": "You are a brand identity expert. Analyze the provided screenshots of a website or application. Your task is to extract the core visual style guide. Focus exclusively on UI elements like the logo, buttons, text, and background colors. You MUST ignore the content of any photographs, illustrations, or user-generated images.\n\nBased on your analysis, generate a JSON object that strictly adheres to the provided schema. All color values must be valid hex codes.",
+  "response": "{\n  \"colors\": {\n    \"primary\": \"#3D4C5C\",\n    \"secondary\": \"#666666\",\n    \"accent\": \"#CB333B\",\n    \"background\": \"#F2F2F2\",\n    \"text\": \"#333333\"\n  },\n  \"logo\": {\n    \"colors\": [\"#3D4C5C\", \"#CB333B\"],\n    \"description\": \"The logo features 'THE CKB FIRM' in a traditional serif font, with 'CKB FIRM' highlighted in red, and 'ATTORNEYS AT LAW' in a smaller sans-serif font below it. A subtle horizontal line underlines 'THE CKB FIRM'.\"\n  },\n  \"buttons\": {\n    \"style\": \"text links\",\n    \"primary\": {\n      \"backgroundColor\": \"#F2F2F2\",\n      \"textColor\": \"#666666\",\n      \"notes\": \"Navigation links are plain text without distinct button shapes or borders, using the secondary color for text on the main background.\"\n    }\n  }\n}"
+}

@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO Metadata
+const title = "Michael S. Baim | Managing Partner | Chicago Commercial Litigation Attorney";
+const description = "Profile of Michael S. Baim, managing partner at The CKB Firm, specializing in commercial litigation, collections, and real estate law in Chicago.";
+
+// Page Content
+const attorneyBio = {
+  body: "Michael S. Baim's practice is concentrated on commercial litigation, collections, creditor/debtor actions, and real estate. He represents a diverse clientele, including large and medium-sized publicly traded and privately held companies. He earned his undergraduate degree in Economics from the University of Illinois and his Juris Doctor from the Chicago-Kent College of Law. Prior to his current role, he was the managing partner at Baim & Lepak, LLC. Michael is an active member of the Illinois Creditors Bar Association.",
+  heading: "Michael S. Baim",
+  subheading: "Managing Partner"
+};
+
+const attorneyImage = {
+  src: "/images/placeholders/headshot-michael-baim.jpg",
+  alt: "Professional headshot of Michael S. Baim, Managing Partner"
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <main id="main-content">
+    <section class="attorney-bio-section">
+      <div class="container">
+        <div class="bio-layout">
+          <div class="bio-image-wrapper">
+            <img 
+              src={attorneyImage.src} 
+              alt={attorneyImage.alt} 
+              width="400" 
+              height="500"
+              loading="lazy"
+            />
+          </div>
+          <article class="bio-content">
+            <h1 class="bio-heading">{attorneyBio.heading}</h1>
+            <p class="bio-subheading">{attorneyBio.subheading}</p>
+            <div class="bio-body">
+              <p>{attorneyBio.body}</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* This assumes a global .container class exists for max-width and centering */
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .attorney-bio-section {
+    padding: 4rem 0;
+    background-color: var(--color-background, #F2F2F2);
+  }
+
+  .bio-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  .bio-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border: 1px solid #e0e0e0;
+  }
+
+  .bio-content {
+    padding-top: 0.5rem;
+  }
+
+  .bio-heading {
+    font-size: 2.75rem;
+    color: var(--color-primary, #3D4C5C);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.1;
+  }
+
+  .bio-subheading {
+    font-size: 1.25rem;
+    color: var(--color-accent, #CB333B);
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .bio-body p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text, #333333);
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive styles for tablets and mobile devices */
+  @media (max-width: 900px) {
+    .bio-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .bio-image-wrapper {
+      max-width: 350px;
+      margin: 0 auto;
+    }
+
+    .bio-content {
+      text-align: center;
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .attorney-bio-section {
+      padding: 2.5rem 0;
+    }
+
+    .bio-heading {
+      font-size: 2.25rem;
+    }
+
+    .bio-subheading {
+      font-size: 1.15rem;
+    }
+  }
+</style>

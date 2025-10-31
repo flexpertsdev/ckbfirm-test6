@@ -1,0 +1,133 @@
+---
+// src/pages/attorneys/patricia-lepak.astro
+
+// SEO Metadata
+const pageTitle = "Patricia A. Lepak | Chief Compliance Officer | The CKB Firm";
+const pageDescription = "Learn about Patricia A. Lepak, Chief Compliance Officer at The CKB Firm, focusing on commercial litigation and collections in the Chicago area.";
+
+// Content Data for the page
+const attorneyBio = {
+  body: "Patricia A. Lepak serves as the firm's Chief Compliance Officer. Her legal practice is focused on commercial litigation, collections, and creditor/debtor actions. Patricia is a graduate of the University of Illinois with a degree in English and obtained her law degree from DePaul University. Her previous experience includes being a partner at Baim & Lepak, LLC.",
+  heading: "Patricia A. Lepak",
+  subheading: "Chief Compliance Officer"
+};
+
+const attorneyImage = {
+  src: "/images/placeholders/headshot-patricia-lepak.jpg",
+  alt: "Professional headshot of Patricia A. Lepak, Chief Compliance Officer"
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription}>
+    <link rel="canonical" href="https://www.ckbfirm.com/attorneys/patricia-lepak" />
+    <!-- This assumes a global stylesheet is available for design tokens -->
+    <link rel="stylesheet" href="/styles/global.css">
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="attorney-profile">
+            <div class="container">
+                <div class="two-column-layout">
+                    <div class="image-column">
+                        <img 
+                            src={attorneyImage.src} 
+                            alt={attorneyImage.alt} 
+                            width="400" 
+                            height="500" 
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="text-column">
+                        <h1 class="attorney-name">{attorneyBio.heading}</h1>
+                        <p class="attorney-title">{attorneyBio.subheading}</p>
+                        <div class="bio-content">
+                            <p>{attorneyBio.body}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Default styles assuming tokens are in global.css */
+        :root {
+            --color-primary: #3D4C5C;
+            --color-secondary: #666666;
+            --color-accent: #CB333B;
+            --color-background: #F2F2F2;
+            --color-text: #333333;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin-inline: auto;
+            padding-inline: 1.5rem;
+        }
+
+        .attorney-profile {
+            padding-block: 4rem;
+        }
+
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (min-width: 768px) {
+            .two-column-layout {
+                grid-template-columns: 300px 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .image-column {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-column img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .attorney-name {
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            color: var(--color-primary);
+            margin-block: 0 0.25rem;
+            line-height: 1.1;
+        }
+
+        .attorney-title {
+            font-size: 1.25rem;
+            color: var(--color-secondary);
+            margin-block: 0 1.5rem;
+            font-weight: 600;
+        }
+
+        .bio-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-block: 0 1rem;
+        }
+    </style>
+</body>
+</html>

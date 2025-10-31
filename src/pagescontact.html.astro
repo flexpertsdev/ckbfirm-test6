@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const seo = {
+  title: "Contact The CKB Firm | Schedule a Consultation",
+  description: "Contact our Chicago law office to schedule a consultation. Discuss your commercial litigation or creditors' rights case with our experienced attorneys."
+};
+---
+
+<Layout seo={seo}>
+  <main id="main-content">
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="form-content">
+            <h1 class="heading">Get In Touch</h1>
+            <p class="body">
+              Reach out to our team to discuss your case. We are ready to learn about your needs and develop a strategy to achieve your goals. Please fill out the form below or call our office directly.
+            </p>
+            <form action="#" method="POST" class="contact-form">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
+              </div>
+              <div class="form-group">
+                <label for="message">How can we help?</label>
+                <textarea id="message" name="message" rows="5" placeholder="Please describe your legal needs..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+          <div class="map-content">
+            <div class="map-embed">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.486824956487!2d-87.6308436845585!3d41.8821949792219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2cae17a3293d%3A0x8b3529f74313b8a2!2sChicago%2C%20IL!5e0!3m2!1sen!2sus!4v1672531200000!5m2!1sen!2sus"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Map of The CKB Firm Location in Chicago"
+                aria-label="Map showing the location of our office in Chicago">
+              </iframe>
+            </div>
+            <div class="contact-details">
+              <h3>Our Office</h3>
+              <address>
+                The CKB Firm<br />
+                123 N Wacker Dr<br />
+                Chicago, IL 60606<br />
+              </address>
+              <p>
+                <strong>Phone:</strong> <a href="tel:+13125551234">(312) 555-1234</a><br />
+                <strong>Email:</strong> <a href="mailto:contact@ckbfirm.com">contact@ckbfirm.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Global styles are assumed to be in a layout or global.css file */
+  /* :root {
+    --color-primary: #3D4C5E;
+    --color-secondary: #5C5C5C;
+    --color-accent: #D9242C;
+    --color-background: #F2F2F2;
+    --color-text: #5A5A5A;
+  } */
+
+  .contact-section {
+    padding: 4rem 1rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    background-color: #FFFFFF;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .heading {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 60ch;
+  }
+
+  .contact-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-color: var(--color-primary);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 0; /* Sharp edges */
+  }
+
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #b51e25; /* A slightly darker shade of accent for hover */
+  }
+
+  .map-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .map-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; /* Aspect ratio 4:3 */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .map-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact-details {
+    color: var(--color-secondary);
+  }
+
+  .contact-details h3 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-details address,
+  .contact-details p {
+    font-style: normal;
+    line-height: 1.7;
+  }
+
+  .contact-details a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+  }
+
+  .contact-details a:hover,
+  .contact-details a:focus {
+    text-decoration: underline;
+  }
+
+  /* Responsive layout for larger screens */
+  @media (min-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 3rem;
+    }
+    
+    .map-content {
+      order: 1; /* Visually move map to the right */
+    }
+
+    .form-content {
+      order: 0;
+    }
+  }
+</style>

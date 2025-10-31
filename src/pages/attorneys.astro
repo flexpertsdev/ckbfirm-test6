@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const seo = {
+  title: "Our Attorneys | The CKB Firm | Chicago, IL",
+  description: "Meet the experienced legal team at The CKB Firm: Michael S. Baim, Patricia A. Lepak, and Brian C. Berlin. Leaders in Chicago creditors' rights law."
+};
+
+const attorneys = [
+  {
+    name: "Michael S. Baim",
+    title: "Managing Partner",
+    imageSrc: "/images/placeholders/michael-baim-portrait.jpg",
+    imageAlt: "Portrait of Michael S. Baim, Managing Partner at The CKB Firm",
+    bio: "Michael's practice is concentrated on commercial litigation, collections, and real estate. He represents a diverse clientele, from large publicly traded companies to privately held businesses.",
+    url: "/attorneys/michael-baim"
+  },
+  {
+    name: "Patricia A. Lepak",
+    title: "Chief Compliance Officer",
+    imageSrc: "/images/placeholders/patricia-lepak-portrait.jpg",
+    imageAlt: "Portrait of Patricia A. Lepak, Chief Compliance Officer at The CKB Firm",
+    bio: "Patricia focuses her practice on commercial litigation, collections, and creditor/debtor actions, ensuring the firm operates with the highest standards of integrity and legal compliance.",
+    url: "/attorneys/patricia-lepak"
+  },
+  {
+    name: "Brian C. Berlin",
+    title: "Attorney",
+    imageSrc: "/images/placeholders/brian-berlin-portrait.jpg",
+    imageAlt: "Portrait of Brian C. Berlin, Attorney at The CKB Firm",
+    bio: "With extensive experience in creditors' rights, Brian handles commercial litigation, collections, and real estate matters. He has been recognized by Super Lawyers for his exceptional work.",
+    url: "/attorneys/brian-berlin"
+  }
+];
+---
+
+<Layout title={seo.title} description={seo.description}>
+  <main id="main-content">
+    <section class="team-section">
+      <div class="container">
+        <div class="section-header">
+          <h1 class="heading">The CKB Firm Legal Team</h1>
+          <p class="body">Our attorneys combine decades of experience to provide exceptional legal counsel in commercial litigation and creditors' rights.</p>
+        </div>
+        
+        <div class="team-list">
+          {attorneys.map(attorney => (
+            <article class="team-card">
+              <img 
+                src={attorney.imageSrc} 
+                alt={attorney.imageAlt}
+                class="team-card-image"
+                loading="lazy"
+                width="300"
+                height="350"
+              />
+              <div class="team-card-content">
+                <h2 class="team-card-name">{attorney.name}</h2>
+                <p class="team-card-title">{attorney.title}</p>
+                <p class="team-card-bio">{attorney.bio}</p>
+                <a href={attorney.url} class="team-card-link" aria-label={`View profile for ${attorney.name}`}>
+                  View Profile
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .team-section {
+    padding: 4rem 1rem;
+    background-color: var(--color-background);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .body {
+    font-size: 1.125rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+  }
+
+  .team-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .team-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .team-card:hover,
+  .team-card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .team-card-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .team-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .team-card-name {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin: 0 0 0.25rem;
+  }
+
+  .team-card-title {
+    font-size: 1rem;
+    color: var(--color-accent);
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+
+  .team-card-bio {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .team-card-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .team-card-link:hover,
+  .team-card-link:focus {
+    border-bottom-color: var(--color-accent);
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
+    .heading {
+      font-size: 2rem;
+    }
+
+    .team-section {
+      padding: 3rem 1rem;
+    }
+  }
+</style>

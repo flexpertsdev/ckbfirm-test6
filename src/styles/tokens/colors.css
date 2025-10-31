@@ -1,0 +1,127 @@
+/**
+ * COLOR SYSTEM
+ * @template-version 2.0.0
+ * @last-updated 2025-10-23
+ *
+ * Using OKLCH for perceptually uniform colors
+ *
+ * 🎨 TO CUSTOMIZE FOR YOUR PROJECT:
+ * 1. Change --hue-brand (0-360) for primary color
+ * 2. Change --hue-accent (0-360) for secondary color
+ *
+ * Example hues:
+ * - Red: 30
+ * - Orange: 60
+ * - Yellow: 90
+ * - Green: 145
+ * - Cyan: 195
+ * - Blue: 250
+ * - Purple: 290
+ * - Pink: 340
+ */
+
+:root {
+  /* Default brand colors - customize these for your project */
+  --hue-brand: 210;    /* Blue (neutral default) */
+  --hue-accent: 30;    /* Orange (neutral default) */
+
+  /* Brand color scale (lightness varies, saturation is moderate) */
+  --color-brand-50: oklch(97% 0.01 var(--hue-brand));
+  --color-brand-100: oklch(94% 0.03 var(--hue-brand));
+  --color-brand-200: oklch(88% 0.06 var(--hue-brand));
+  --color-brand-300: oklch(80% 0.10 var(--hue-brand));
+  --color-brand-400: oklch(70% 0.15 var(--hue-brand));
+  --color-brand-500: oklch(60% 0.15 var(--hue-brand));
+  --color-brand-600: oklch(50% 0.15 var(--hue-brand));
+  --color-brand-700: oklch(40% 0.12 var(--hue-brand));
+  --color-brand-800: oklch(30% 0.09 var(--hue-brand));
+  --color-brand-900: oklch(20% 0.06 var(--hue-brand));
+
+  /* Accent color scale */
+  --color-accent-50: oklch(97% 0.01 var(--hue-accent));
+  --color-accent-100: oklch(94% 0.03 var(--hue-accent));
+  --color-accent-200: oklch(88% 0.06 var(--hue-accent));
+  --color-accent-300: oklch(80% 0.12 var(--hue-accent));
+  --color-accent-400: oklch(70% 0.18 var(--hue-accent));
+  --color-accent-500: oklch(60% 0.18 var(--hue-accent));
+  --color-accent-600: oklch(55% 0.18 var(--hue-accent));
+  --color-accent-700: oklch(45% 0.15 var(--hue-accent));
+  --color-accent-800: oklch(35% 0.11 var(--hue-accent));
+  --color-accent-900: oklch(25% 0.07 var(--hue-accent));
+
+  /* Neutral scale (grays) */
+  --color-neutral-0: oklch(100% 0 0);
+  --color-neutral-50: oklch(98% 0 0);
+  --color-neutral-100: oklch(96% 0 0);
+  --color-neutral-200: oklch(92% 0 0);
+  --color-neutral-300: oklch(84% 0 0);
+  --color-neutral-400: oklch(70% 0 0);
+  --color-neutral-500: oklch(55% 0 0);
+  --color-neutral-600: oklch(45% 0 0);
+  --color-neutral-700: oklch(35% 0 0);
+  --color-neutral-800: oklch(25% 0 0);
+  --color-neutral-900: oklch(15% 0 0);
+  --color-neutral-950: oklch(10% 0 0);
+  --color-neutral-1000: oklch(0% 0 0);
+
+  /* Semantic colors - USE THESE IN COMPONENTS */
+  --color-bg: var(--color-neutral-0);
+  --color-bg-subtle: var(--color-neutral-50);
+  --color-bg-muted: var(--color-neutral-100);
+  --color-bg-emphasis: var(--color-brand-50);
+
+  --color-text: var(--color-neutral-900);
+  --color-text-muted: var(--color-neutral-600);
+  --color-text-subtle: var(--color-neutral-500);
+  --color-text-inverse: var(--color-neutral-0);
+
+  --color-border: var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-emphasis: var(--color-brand-200);
+
+  --color-primary: var(--color-brand-500);
+  --color-primary-hover: var(--color-brand-600);
+  --color-primary-active: var(--color-brand-700);
+  --color-primary-text: var(--color-neutral-0);
+
+  --color-accent: var(--color-accent-500);
+  --color-accent-hover: var(--color-accent-600);
+  --color-accent-active: var(--color-accent-700);
+
+  /* Surface colors (for cards, elevated elements) */
+  --color-surface: var(--color-neutral-0);
+  --color-surface-hover: var(--color-neutral-50);
+  --color-surface-active: var(--color-neutral-100);
+
+  /* Feedback colors */
+  --color-success: oklch(70% 0.18 145);
+  --color-warning: oklch(75% 0.15 85);
+  --color-error: oklch(60% 0.22 25);
+  --color-info: oklch(65% 0.18 235);
+}
+
+/* Dark mode support - remove this block if using light-only theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--color-neutral-950);
+    --color-bg-subtle: var(--color-neutral-900);
+    --color-bg-muted: var(--color-neutral-800);
+    --color-bg-emphasis: var(--color-brand-900);
+
+    --color-text: var(--color-neutral-100);
+    --color-text-muted: var(--color-neutral-400);
+    --color-text-subtle: var(--color-neutral-500);
+
+    --color-border: var(--color-neutral-800);
+    --color-border-strong: var(--color-neutral-700);
+    --color-border-emphasis: var(--color-brand-800);
+
+    --color-surface: var(--color-neutral-900);
+    --color-surface-hover: var(--color-neutral-800);
+    --color-surface-active: var(--color-neutral-700);
+
+    --color-primary: var(--color-brand-400);
+    --color-primary-hover: var(--color-brand-300);
+    --color-primary-active: var(--color-brand-200);
+  }
+}

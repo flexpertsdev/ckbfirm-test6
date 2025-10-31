@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Dummy data for blog posts to demonstrate the layout
+const posts = [
+  {
+    slug: '/blog/5-common-mistakes-in-debt-collection',
+    title: '5 Common Mistakes Businesses Make When Trying to Collect a Debt',
+    date: 'October 26, 2023',
+    author: 'Michael S. Baim',
+    excerpt: 'Attempting to collect outstanding debts can be a frustrating process. Discover the five most common pitfalls businesses encounter and how to avoid them to improve your recovery rate.',
+    image: '/images/placeholders/gavel-and-documents.jpg',
+    imageAlt: 'A gavel resting on legal documents, symbolizing business law and debt collection.'
+  },
+  {
+    slug: '/blog/understanding-fdcpa-for-commercial-creditors',
+    title: 'Understanding the FDCPA for Commercial Creditors',
+    date: 'September 15, 2023',
+    author: 'Patricia A. Lepak',
+    excerpt: 'While the Fair Debt Collection Practices Act (FDCPA) primarily governs consumer debt, its principles can have implications for commercial creditors. We break down what you need to know.',
+    image: '/images/placeholders/law-books-and-scale.jpg',
+    imageAlt: 'A stack of law books next to a scale of justice, representing legal compliance.'
+  },
+  {
+    slug: '/blog/filing-a-lawsuit-for-unpaid-invoices-cook-county',
+    title: 'Step-by-Step Guide: Filing a Lawsuit for Unpaid Invoices in Cook County',
+    date: 'August 02, 2023',
+    author: 'Brian C. Berlin',
+    excerpt: 'When demand letters fail, litigation may be the next step. This guide outlines the process of filing a lawsuit for unpaid commercial invoices in Cook County, Illinois.',
+    image: '/images/placeholders/chicago-courthouse.jpg',
+    imageAlt: 'The exterior of a courthouse building in Chicago, Illinois.'
+  },
+  {
+    slug: '/blog/when-to-hire-collections-attorney',
+    title: 'When to Hire a Collections Attorney vs. a Collection Agency',
+    date: 'July 19, 2023',
+    author: 'Michael S. Baim',
+    excerpt: 'Choosing between a collections attorney and a collection agency is a critical decision. Learn the key differences and determine the best path for your business\'s needs.',
+    image: '/images/placeholders/handshake-agreement.jpg',
+    imageAlt: 'Two professionals shaking hands across a desk, signifying a legal agreement.'
+  }
+];
+
+const seo = {
+  title: "Illinois Creditors' Rights Blog | Legal Insights from The CKB Firm",
+  description: "Stay informed with the latest news and analysis on commercial collections, litigation, and creditors' rights in Illinois from the attorneys at The CKB Firm."
+};
+
+const content = {
+  heading: "Firm Insights & Legal Updates",
+  body: "Explore articles and insights from our legal team on topics relevant to creditors and businesses in Illinois. Our blog serves as a resource for understanding the complexities of commercial collections and litigation."
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+  <main id="main-content">
+    <section class="blog-feed">
+      <div class="container">
+        <header class="section-header">
+          <h1>{content.heading}</h1>
+          <p>{content.body}</p>
+        </header>
+
+        <div class="article-list">
+          {posts.map(post => (
+            <article class="article-card">
+              <a href={post.slug} class="card-image-link" aria-hidden="true" tabindex="-1">
+                <img src={post.image} alt={post.imageAlt} loading="lazy" />
+              </a>
+              <div class="card-content">
+                <header>
+                  <p class="post-meta">
+                    <time datetime={new Date(post.date).toISOString()}>{post.date}</time>
+                    <span>&bull;</span>
+                    <span>{post.author}</span>
+                  </p>
+                  <h2 class="post-title">
+                    <a href={post.slug}>{post.title}</a>
+                  </h2>
+                </header>
+                <p class="post-excerpt">{post.excerpt}</p>
+                <a href={post.slug} class="read-more" aria-label={`Read more about ${post.title}`}>Read More &rarr;</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-feed {
+    padding: 4rem 0;
+    background-color: var(--color-background);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-header h1 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+  }
+
+  /* Article List Pattern */
+  .article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .article-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  }
+
+  .card-image-link img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .post-meta {
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .post-meta span {
+    margin: 0 0.25rem;
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .post-title a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-title a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .post-excerpt {
+    color: var(--color-text);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .read-more {
+    color: var(--color-accent);
+    font-weight: bold;
+    text-decoration: none;
+    align-self: flex-start;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .section-header h1 {
+      font-size: 2rem;
+    }
+
+    .section-header p {
+      font-size: 1rem;
+    }
+    
+    .blog-feed {
+      padding: 3rem 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .article-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

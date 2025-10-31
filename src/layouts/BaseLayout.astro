@@ -1,0 +1,110 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  article?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/og-image.jpg',
+  article = false
+} = Astro.props;
+
+const siteUrl = import.meta.env.SITE || 'https://yoursite.com';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const socialImage = new URL(image, siteUrl);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={article ? 'article' : 'website'} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={socialImage} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={socialImage} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts - Self-hosted recommended for performance -->
+  <!-- Uncomment and add your fonts to /public/fonts/ -->
+  <!-- <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin /> -->
+
+  <!-- View Transitions for smooth navigation -->
+  <ViewTransitions />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": article ? "Article" : "WebSite",
+    "headline": title,
+    "description": description,
+    "image": socialImage.toString(),
+    "url": canonicalURL.toString(),
+  })} />
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Main content slot -->
+  <main id="main">
+    <slot />
+  </main>
+
+  <!-- Scroll animation observer (progressive enhancement) -->
+  <script>
+    // Observe elements with data-animate attribute
+    const observeAnimations = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animated');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '0px 0px -10% 0px'
+        }
+      );
+
+      document.querySelectorAll('[data-animate]').forEach((el) => {
+        observer.observe(el);
+      });
+    };
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', observeAnimations);
+
+    // Re-run after view transitions
+    document.addEventListener('astro:page-load', observeAnimations);
+  </script>
+</body>
+</html>

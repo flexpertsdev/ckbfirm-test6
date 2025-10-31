@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seo = {
+  title: "Practice Areas | Commercial Litigation & Creditors' Rights | The CKB Firm",
+  description: "The CKB Firm offers expert legal services in creditors' rights, commercial litigation, business debt collection, and real estate law in Chicago, IL."
+};
+
+const practiceAreas = [
+  {
+    layout: 'text-left-image-right',
+    heading: "Creditors' Rights",
+    body: "We provide comprehensive legal support for creditors at every stage of the collections process. Our services include pre-suit matters, aggressive litigation, and strategic post-judgment collections to ensure you recover what you are owed.",
+    cta: {
+      link: "/practice-areas/creditors-rights",
+      text: "Learn More"
+    },
+    image: {
+      src: "/images/placeholders/icon-creditors-rights.jpg",
+      alt: "Icon of legal scales representing creditors' rights law."
+    }
+  },
+  {
+    layout: 'image-left-text-right',
+    heading: "Commercial Litigation",
+    body: "Our firm is equipped to handle complex business and commercial law matters. We represent clients in breach of contract disputes and provide a robust counterclaim defense, always aiming to protect your business's interests and bottom line.",
+    cta: {
+      link: "/practice-areas/commercial-litigation",
+      text: "Learn More"
+    },
+    image: {
+      src: "/images/placeholders/icon-commercial-litigation.jpg",
+      alt: "Icon of a gavel representing commercial litigation."
+    }
+  },
+  {
+    layout: 'text-left-image-right',
+    heading: "Real Estate Law",
+    body: "The CKB Firm facilitates smooth and secure real estate transactions. We handle both commercial and residential real estate closings with meticulous attention to detail, ensuring all legal requirements are met and your investment is protected.",
+    cta: {
+      link: "/practice-areas/real-estate",
+      text: "Learn More"
+    },
+    image: {
+      src: "/images/placeholders/icon-real-estate.jpg",
+      alt: "Icon of a house and key representing real estate law."
+    }
+  }
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+  <main id="main-content">
+    <header class="page-header">
+      <div class="container">
+        <h1>Our Practice Areas</h1>
+        <p class="subtitle">Dedicated legal expertise for creditors and businesses in Chicago.</p>
+      </div>
+    </header>
+
+    {practiceAreas.map((area, index) => (
+      <section class:list={["feature-section", { 'section-bg': index % 2 !== 0 }]}>
+        <div class:list={["container", "feature-container", { 'reverse-layout': area.layout === 'image-left-text-right' }]}>
+          <div class="feature-text">
+            <h2>{area.heading}</h2>
+            <p>{area.body}</p>
+            <a href={area.cta.link} class="cta-link">
+              {area.cta.text} &rarr;
+            </a>
+          </div>
+          <div class="feature-image">
+            <img src={area.image.src} alt={area.image.alt} loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </section>
+    ))}
+  </main>
+</BaseLayout>
+
+<style>
+  /* Global Styles assumed from a global.css */
+  :root {
+    --color-primary: #3D4C5C;
+    --color-secondary: #666666;
+    --color-accent: #CB333B;
+    --color-background: #F2F2F2;
+    --color-text: #333333;
+    --color-white: #FFFFFF;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Page Header */
+  .page-header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .page-header .subtitle {
+    font-size: 1.2rem;
+    color: var(--color-background);
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  /* Feature Sections */
+  .feature-section {
+    padding: 4rem 0;
+  }
+
+  .section-bg {
+    background-color: var(--color-white); /* Use white for alternating sections against the main background */
+  }
+
+  .feature-container {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .feature-text,
+  .feature-image {
+    flex: 1;
+    min-width: 0; /* Prevents flex items from overflowing */
+  }
+
+  .feature-text h2 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .feature-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .cta-link:hover,
+  .cta-link:focus {
+    text-decoration: underline;
+    transform: translateX(4px);
+  }
+
+  .feature-image img {
+    width: 100%;
+    max-width: 400px; /* Control image size */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Layout Variations */
+  .reverse-layout {
+    flex-direction: row-reverse;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 3rem 0;
+    }
+
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .feature-section {
+      padding: 3rem 0;
+    }
+
+    .feature-container,
+    .reverse-layout {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .feature-image {
+      margin-top: 2rem;
+    }
+
+    .reverse-layout .feature-image {
+      order: -1; /* Image appears on top in reversed layout on mobile */
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+  }
+</style>

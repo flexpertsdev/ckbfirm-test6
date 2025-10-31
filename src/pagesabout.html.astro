@@ -1,0 +1,263 @@
+---
+// Assuming a base layout exists at src/layouts/Layout.astro
+// This component would handle the <head>, global CSS, header, and footer.
+import Layout from '../layouts/Layout.astro';
+
+const seo = {
+  title: "About The CKB Firm | Chicago Commercial Law Attorneys",
+  description: "Learn about The CKB Firm's client-focused approach, our experienced legal team, and our commitment to excellence in creditors' rights and commercial law."
+};
+
+// Placeholder data for attorney profiles
+const attorneys = [
+  {
+    name: "Michael Baim",
+    title: "Managing Partner",
+    image: "/images/placeholders/attorney-male-1.jpg",
+    url: "/attorneys/michael-baim"
+  },
+  {
+    name: "Patricia Lepak",
+    title: "Chief Compliance Officer",
+    image: "/images/placeholders/attorney-female-1.jpg",
+    url: "/attorneys/patricia-lepak"
+  },
+  {
+    name: "Brian Berlin",
+    title: "Senior Trial Attorney",
+    image: "/images/placeholders/attorney-male-2.jpg",
+    url: "/attorneys/brian-berlin"
+  }
+];
+---
+
+<Layout title={seo.title} description={seo.description}>
+  <main id="main-content">
+
+    <!-- Section 1: Firm Mission -->
+    <section class="section-mission" aria-labelledby="mission-heading">
+      <div class="container text-image-right">
+        <div class="text-content">
+          <h1 id="mission-heading" class="section-heading">Your Trusted Partner in Creditors' Rights and Commercial Collections</h1>
+          <p>Welcome to The CKB Firm, a Chicago-based law firm dedicated to providing exceptional legal collection services. For businesses, unresolved debt can hinder growth and stability. Our mission is to deliver effective, tailored legal strategies that recover assets and protect your bottom line. With a focus on creditors' rights, commercial litigation, and real estate matters, we are the firm businesses trust when collections are key to their success.</p>
+        </div>
+        <div class="image-content">
+          <img 
+            src="/images/placeholders/office-interior-image.jpg" 
+            alt="Modern and professional interior of The CKB Firm's Chicago office."
+            loading="lazy"
+            width="600"
+            height="400"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Our Approach -->
+    <section class="section-approach" aria-labelledby="approach-heading">
+      <div class="container text-only-centered">
+        <h2 id="approach-heading" class="section-heading">Technology-Driven and Client-Focused</h2>
+        <p>At The CKB Firm, we have built our reputation on the strong, transparent relationships we maintain with our clients. We are at the forefront of law office automation, investing in the latest technology to provide efficient, value-added legal services. This commitment to technology ensures that you are always informed about the status of your cases and equipped with intelligent recommendations to make the best decisions for your business.</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Attorneys -->
+    <section class="section-attorneys" aria-labelledby="attorneys-heading">
+      <div class="container">
+        <div class="attorneys-intro">
+          <h2 id="attorneys-heading" class="section-heading">Meet Our Experienced Team</h2>
+          <p>Our legal team has the skill and determination to handle even the most complex cases. While our office is in Chicago, we have a network of attorneys capable of handling creditor claims throughout the United States.</p>
+        </div>
+        <div class="profile-card-grid-3">
+          {attorneys.map(attorney => (
+            <article class="profile-card" aria-labelledby={`attorney-name-${attorney.name.split(' ').join('-')}`}>
+              <img 
+                src={attorney.image} 
+                alt={`Portrait of ${attorney.name}, ${attorney.title} at The CKB Firm.`}
+                loading="lazy"
+                width="300"
+                height="300"
+              />
+              <div class="card-content">
+                <h3 id={`attorney-name-${attorney.name.split(' ').join('-')}`} class="attorney-name">{attorney.name}</h3>
+                <p class="attorney-title">{attorney.title}</p>
+                <a href={attorney.url} class="profile-link" aria-label={`View profile for ${attorney.name}`}>View Profile</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* General Section & Container Styles */
+  section {
+    padding: 4rem 1rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .section-heading {
+    color: var(--color-primary, #3D4C5E);
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  p {
+    color: var(--color-text, #5A5A5A);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 75ch;
+  }
+
+  /* Section 1: Firm Mission (text-image-right) */
+  .section-mission {
+    background-color: var(--color-background, #F2F2F2);
+  }
+
+  .text-image-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .text-image-right .text-content {
+    flex: 1 1 500px;
+  }
+
+  .text-image-right .image-content {
+    flex: 1 1 400px;
+  }
+
+  .text-image-right img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Section 2: Our Approach (text-only-centered) */
+  .section-approach {
+    background-color: #FFFFFF;
+  }
+  
+  .text-only-centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-only-centered .section-heading {
+    max-width: 800px;
+  }
+
+  .text-only-centered p {
+    max-width: 800px;
+  }
+
+  /* Section 3: Attorneys (profile-card-grid-3) */
+  .section-attorneys {
+    background-color: var(--color-background, #F2F2F2);
+  }
+
+  .attorneys-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .attorneys-intro p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .profile-card-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .profile-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-card:hover,
+  .profile-card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .profile-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .profile-card .card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .attorney-name {
+    color: var(--color-primary, #3D4C5E);
+    font-size: 1.5rem;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .attorney-title {
+    color: var(--color-secondary, #5C5C5C);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-link {
+    display: inline-block;
+    background-color: var(--color-accent, #D9242C);
+    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: auto; /* Pushes button to the bottom */
+  }
+
+  .profile-link:hover,
+  .profile-link:focus-visible {
+    background-color: var(--color-primary, #3D4C5E);
+    outline: 2px solid var(--color-primary, #3D4C5E);
+    outline-offset: 2px;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .text-image-right {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    section {
+      padding: 3rem 1rem;
+    }
+    
+    .section-heading {
+      font-size: 1.8rem;
+    }
+  }
+</style>

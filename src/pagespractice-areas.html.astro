@@ -1,0 +1,248 @@
+---
+const seo = {
+  title: "Our Practice Areas | Commercial Litigation & Creditors' Rights",
+  description: "Explore the legal services offered by The CKB Firm, including commercial collections, creditors' rights litigation, post-judgment enforcement, and real estate law."
+};
+
+const services = [
+  {
+    title: "Commercial Litigation",
+    description: "We provide aggressive representation for businesses in a wide range of disputes, including breach of contract, partnership disagreements, and other complex commercial conflicts to protect your interests.",
+    image: "/images/placeholders/courtroom-gavel.jpg",
+    alt: "A wooden gavel and sound block on a dark surface, symbolizing legal judgment."
+  },
+  {
+    title: "Creditors' Rights",
+    description: "Our firm offers comprehensive representation for creditors at every stage of the collection process, from strategic pre-suit demands and negotiation to full-scale litigation and asset recovery.",
+    image: "/images/placeholders/legal-documents.jpg",
+    alt: "A person signing a legal document with a fountain pen."
+  },
+  {
+    title: "Post-Judgment Enforcement",
+    description: "Securing a judgment is only half the battle. We are skilled in locating assets and utilizing all available legal tools—including citations, garnishments, and levies—to enforce judgments and collect what you are owed.",
+    image: "/images/placeholders/asset-recovery.jpg",
+    alt: "A magnifying glass focusing on a stack of coins, representing asset location and recovery."
+  },
+  {
+    title: "Real Estate Law",
+    description: "We handle both commercial and residential real estate closings with meticulous attention to detail, ensuring a smooth, secure, and legally sound transaction for all parties involved.",
+    image: "/images/placeholders/real-estate-keys.jpg",
+    alt: "A set of house keys with a keychain in the shape of a house."
+  }
+];
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description}>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content={seo.title}>
+    <meta property="og:description" content={seo.description}>
+    <!-- <meta property="og:image" content="URL_TO_A_RELEVANT_IMAGE"> -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content={seo.title}>
+    <meta property="twitter:description" content={seo.description}>
+    <!-- <meta property="twitter:image" content="URL_TO_A_RELEVANT_IMAGE"> -->
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <!-- Placeholder for a site header -->
+    <header class="site-header">
+        <div class="container">
+            <!-- Navigation would go here -->
+        </div>
+    </header>
+
+    <main>
+        <!-- Section 1: Practice Areas Introduction -->
+        <section class="intro-section text-only-centered">
+            <div class="container">
+                <h1>Comprehensive Legal Solutions for Your Business</h1>
+                <p>The CKB Firm provides comprehensive legal services focused on protecting the financial interests of our clients. Our core practice areas are designed to address every stage of the commercial debt cycle, from initial disputes to final recovery.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Services Grid -->
+        <section class="services-section">
+            <div class="container">
+                <div class="services-header text-only-centered">
+                    <h2>Our Services</h2>
+                    <p>Our dedicated attorneys offer expert counsel and aggressive representation in the following areas.</p>
+                </div>
+                <div class="card-grid-2">
+                    {services.map(service => (
+                        <article class="service-card">
+                            <img src={service.image} alt={service.alt} class="card-image" loading="lazy" />
+                            <div class="card-content">
+                                <h3>{service.title}</h3>
+                                <p>{service.description}</p>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Placeholder for a site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <!-- Footer content would go here -->
+        </div>
+    </footer>
+</body>
+</html>
+
+<style is:global>
+    :root {
+        --color-primary: #3D4C5E;
+        --color-secondary: #5C5C5C;
+        --color-accent: #D9242C;
+        --color-background: #F2F2F2;
+        --color-text: #5A5A5A;
+        --color-white: #FFFFFF;
+        --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* Basic Reset */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-family-sans);
+        color: var(--color-text);
+        background-color: var(--color-background);
+        line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+        font-family: var(--font-family-sans);
+        color: var(--color-primary);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.25rem; }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+</style>
+
+<style>
+    /* Section 1: Introduction Layout */
+    .intro-section {
+        padding: 4rem 0;
+        background-color: var(--color-white);
+    }
+
+    .text-only-centered {
+        text-align: center;
+    }
+
+    .text-only-centered .container {
+        max-width: 800px;
+    }
+
+    .text-only-centered h1 {
+        color: var(--color-primary);
+    }
+
+    .text-only-centered p {
+        font-size: 1.125rem;
+        color: var(--color-secondary);
+    }
+
+    /* Section 2: Services Grid Layout */
+    .services-section {
+        padding: 4rem 0;
+    }
+
+    .services-header {
+        margin-bottom: 3rem;
+    }
+    
+    .services-header h2 {
+        color: var(--color-primary);
+    }
+
+    .services-header p {
+        font-size: 1.125rem;
+        color: var(--color-secondary);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .service-card {
+        background-color: var(--color-white);
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .card-content h3 {
+        color: var(--color-accent);
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+        .card-grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+    }
+</style>

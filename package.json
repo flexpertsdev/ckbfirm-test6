@@ -1,0 +1,22 @@
+{
+  "name": "astro-generated-site",
+  "type": "module",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Generated website using FlexOS Website Builder",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.7",
+    "@astrojs/netlify": "^6.5.12",
+    "astro": "^5.14.3",
+    "astro-icon": "^1.1.5",
+    "@iconify-json/lucide": "^1.2.25",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {}
+}

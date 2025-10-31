@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "About The CKB Firm | Experienced Illinois Collection Lawyers";
+const pageDescription = "Learn about The CKB Firm, a Chicago-based law firm dedicated to providing effective legal representation in commercial litigation and creditors' rights.";
+
+const attorneys = [
+  {
+    name: "Michael S. Baim",
+    title: "Managing Partner",
+    bio: "Focuses on commercial litigation, collections, and real estate. Represents a diverse clientele of publicly traded and privately held companies.",
+    image: "/images/placeholders/attorney-michael-baim.jpg",
+    url: "/attorneys/michael-baim"
+  },
+  {
+    name: "Patricia A. Lepak",
+    title: "Chief Compliance Officer",
+    bio: "Specializes in commercial litigation, collections, and creditor/debtor actions, ensuring the firm adheres to the highest standards.",
+    image: "/images/placeholders/attorney-patricia-lepak.jpg",
+    url: "/attorneys/patricia-lepak"
+  },
+  {
+    name: "Brian C. Berlin",
+    title: "Attorney",
+    bio: "Brings extensive experience in creditors' rights, commercial litigation, and real estate. Recognized by Super Lawyers for his work.",
+    image: "/images/placeholders/attorney-brian-berlin.jpg",
+    url: "/attorneys/brian-berlin"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main id="main-content">
+    <header class="page-header">
+      <div class="container">
+        <h1>About The CKB Firm</h1>
+      </div>
+    </header>
+
+    <!-- Section 1: Firm Overview -->
+    <section class="firm-overview">
+      <div class="container">
+        <div class="two-column-grid">
+          <div class="text-content">
+            <h2>Dedicated Legal Counsel for Creditors</h2>
+            <p>The CKB Firm is a Chicago-based law firm that focuses on creditors' rights, commercial litigation, and real estate law. We represent creditors in litigation throughout Cook County and the surrounding areas, including DuPage, Kane, Lake, and Will counties. Our clients range from large, publicly traded companies to medium-sized and privately held businesses. We pride ourselves on a client-focused approach, combining deep legal knowledge with strategic action to achieve favorable outcomes in even the most complex cases.</p>
+          </div>
+          <div class="image-content">
+            <img 
+              src="/images/placeholders/image-chicago-courthouse.jpg" 
+              alt="A stately courthouse building in Chicago, representing the legal authority of The CKB Firm."
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Our Attorneys -->
+    <section class="our-attorneys">
+      <div class="container">
+        <header class="section-header">
+          <h2>Meet Our Legal Team</h2>
+          <p>Our strength lies in our people. Meet the attorneys who will work tirelessly to protect your interests.</p>
+        </header>
+        <div class="team-grid">
+          {attorneys.map(attorney => (
+            <article class="team-card">
+              <img 
+                src={attorney.image} 
+                alt={`Professional portrait of ${attorney.name}`} 
+                class="team-card-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="team-card-content">
+                <h3 class="team-card-name">{attorney.name}</h3>
+                <p class="team-card-title">{attorney.title}</p>
+                <p class="team-card-bio">{attorney.bio}</p>
+                <a href={attorney.url} class="team-card-link" aria-label={`Learn more about ${attorney.name}`}>
+                  View Profile
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* General Page Styles */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-header {
+    background-color: var(--color-background);
+    padding: 3rem 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .page-header h1 {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin: 0;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  h2 {
+    color: var(--color-primary);
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--color-text);
+    line-height: 1.7;
+    max-width: 70ch;
+  }
+
+  /* Section 1: Firm Overview */
+  .firm-overview {
+    background-color: #fff;
+  }
+
+  .two-column-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .image-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Section 2: Our Attorneys */
+  .our-attorneys {
+    background-color: var(--color-background);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header p {
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-secondary);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .team-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .team-card-image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .team-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-card-name {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin: 0 0 0.25rem;
+  }
+
+  .team-card-title {
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+
+  .team-card-bio {
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .team-card-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: 600;
+    border: 2px solid var(--color-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: auto;
+  }
+
+  .team-card-link:hover,
+  .team-card-link:focus {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 900px) {
+    .two-column-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .image-content {
+      order: -1; /* Move image to the top on mobile */
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+  }
+</style>

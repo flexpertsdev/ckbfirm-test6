@@ -1,0 +1,276 @@
+/**
+ * SEMANTIC UTILITY CLASSES
+ * Layout primitives based on Every Layout principles
+ */
+
+/* CONTAINER */
+.container {
+  width: 100%;
+  max-width: var(--width-xl);
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+}
+
+.container-narrow { max-width: var(--width-md); }
+.container-wide { max-width: var(--width-2xl); }
+.container-full { max-width: var(--width-full); padding-inline: 0; }
+
+/* SECTION - Vertical spacing for major page sections */
+.section {
+  padding-block: var(--space-section-md);
+}
+
+.section-sm { padding-block: var(--space-section-sm); }
+.section-lg { padding-block: var(--space-section-lg); }
+.section-xl { padding-block: var(--space-section-xl); }
+
+/* FLOW - Vertical rhythm for content */
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+.flow-sm { --flow-space: var(--space-4); }
+.flow-md { --flow-space: var(--space-6); }
+.flow-lg { --flow-space: var(--space-8); }
+
+/* STACK - Explicit vertical spacing */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-4));
+}
+
+.stack-sm { --stack-gap: var(--space-2); }
+.stack-md { --stack-gap: var(--space-6); }
+.stack-lg { --stack-gap: var(--space-8); }
+.stack-xl { --stack-gap: var(--space-12); }
+
+/* STACK ALIGNMENT MODIFIERS - Fixes flex centering issues */
+.stack-center {
+  align-items: center;
+}
+
+.stack-start {
+  align-items: flex-start;
+}
+
+.stack-end {
+  align-items: flex-end;
+}
+
+/* TEXT CENTERING - Fixes flex conflicts with text-align */
+.center-content {
+  text-align: center;
+}
+
+.center-content > * {
+  margin-inline: auto;
+}
+
+/* CLUSTER - Horizontal grouping with wrapping */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--space-4));
+  align-items: center;
+}
+
+.cluster-start { align-items: flex-start; }
+.cluster-end { align-items: flex-end; }
+.cluster-stretch { align-items: stretch; }
+.cluster-between { justify-content: space-between; }
+
+/* GRID - Responsive grid */
+.grid {
+  display: grid;
+  gap: var(--grid-gap, var(--space-6));
+}
+
+/* Auto-fit: fills available space */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min, 250px), 100%), 1fr));
+}
+
+/* Auto-fill: creates as many columns as fit */
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min, 250px), 100%), 1fr));
+}
+
+/* Fixed column counts at breakpoints */
+.grid-cols-1 { grid-template-columns: 1fr; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .lg\:grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .lg\:grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* SIDEBAR - Sidebar layout */
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-gap, var(--space-6));
+}
+
+.sidebar > :first-child {
+  flex-basis: var(--sidebar-width, 250px);
+  flex-grow: 1;
+}
+
+.sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--sidebar-min, 50%);
+}
+
+/* CENTER - Center content with max-width */
+.center {
+  box-sizing: content-box;
+  max-width: var(--center-width, var(--measure));
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+}
+
+/* COVER - Full viewport height with centered content */
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+  padding: var(--space-6);
+}
+
+.cover > * {
+  margin-block: var(--space-4);
+}
+
+.cover > :first-child:not(.cover-center) {
+  margin-block-start: 0;
+}
+
+.cover > :last-child:not(.cover-center) {
+  margin-block-end: 0;
+}
+
+.cover > .cover-center {
+  margin-block: auto;
+}
+
+/* VISUALLY HIDDEN - Accessible but not visible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: var(--space-4);
+  background: var(--color-bg);
+  color: var(--color-text);
+  text-decoration: none;
+  transform: translateY(-100%);
+  transition: transform var(--duration-fast);
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* SURFACE - Card/elevated surface */
+.surface {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-6);
+  transition: var(--transition-colors);
+}
+
+.surface-hover:hover {
+  background: var(--color-surface-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* ANIMATION UTILITIES */
+[data-animate] {
+  opacity: 0;
+}
+
+[data-animate].animated {
+  animation-fill-mode: forwards;
+}
+
+[data-animate="fade"].animated {
+  animation: fadeIn var(--duration-slow) var(--ease-out) forwards;
+}
+
+[data-animate="slide-up"].animated {
+  animation: slideUp var(--duration-slow) var(--ease-out) forwards;
+}
+
+[data-animate="slide-left"].animated {
+  animation: slideLeft var(--duration-slow) var(--ease-out) forwards;
+}
+
+[data-animate="scale"].animated {
+  animation: scaleIn var(--duration-slow) var(--ease-spring) forwards;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seo = {
+  title: "Contact The CKB Firm | Chicago Law Firm",
+  description: "Reach out to The CKB Firm in Chicago for a consultation. Find our address, phone number, and an online inquiry form."
+};
+
+const content = {
+  "body": "Contact us today to discuss your legal needs. Our office is conveniently located in the heart of Chicago. \n\n**Address:**\n30 N. LaSalle St., Suite 1520\nChicago, IL 60602\n\n**Phone:**\n312-704-8510\n\n**Email:**\ninfo@ckblaw.com",
+  "heading": "Get In Touch"
+};
+
+// Helper to format the body text with bold tags and line breaks
+function formatBody(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br />');
+}
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+  <main id="main-content">
+    <section class="contact-section">
+      <div class="container">
+        <div class="two-column-contact">
+          <div class="contact-details">
+            <h1 class="heading">{content.heading}</h1>
+            <div class="info-text" set:html={formatBody(content.body)} />
+            
+            <form class="contact-form" method="POST" action="/contact-success">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-group">
+                <label for="message">How can we help?</label>
+                <textarea id="message" name="message" rows="6" required aria-required="true"></textarea>
+              </div>
+              <button type="submit" class="submit-button">Send Inquiry</button>
+            </form>
+          </div>
+          <div class="map-container">
+            <img 
+              src="/images/placeholders/map-placeholder.jpg" 
+              alt="Map showing the location of The CKB Firm in downtown Chicago" 
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  :root {
+    /* These would be in a global.css file, but are included here for context */
+    --color-primary: #B52B2C;
+    --color-secondary: #333E48;
+    --color-accent: #B52B2C;
+    --color-background: #F5F5F5;
+    --color-text: #666666;
+  }
+
+  .contact-section {
+    padding: 4rem 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .two-column-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .heading {
+    font-family: 'Times New Roman', Times, serif; /* Matching serif style from logo */
+    font-size: 2.75rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .info-text {
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .info-text strong {
+    color: var(--color-secondary);
+    font-weight: 600;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group label {
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #FFFFFF;
+    color: var(--color-text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(181, 43, 44, 0.2);
+  }
+
+  .submit-button {
+    padding: 1rem 2rem;
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .submit-button:hover,
+  .submit-button:focus {
+    background-color: #8c2122; /* Darker shade of primary for hover */
+  }
+
+  .map-container {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .map-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .two-column-contact {
+      grid-template-columns: 1fr;
+    }
+    .map-container {
+      position: static;
+      margin-top: 3rem;
+    }
+    .heading {
+      font-size: 2.25rem;
+    }
+  }
+</style>

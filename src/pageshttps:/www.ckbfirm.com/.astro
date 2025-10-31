@@ -1,0 +1,381 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seo = {
+  title: "The CKB Firm | Chicago Creditors' Rights & Commercial Litigation Attorneys",
+  description: "The CKB Firm provides expert legal services in creditors' rights, commercial litigation, and real estate law for clients in Chicago and surrounding counties."
+};
+
+const practiceAreas = [
+  {
+    name: "Commercial Litigation",
+    description: "Handling complex business and commercial law matters, including breach of contract and counterclaim defense.",
+    icon: "gavel"
+  },
+  {
+    name: "Creditors' Rights",
+    description: "Comprehensive services from pre-suit actions and litigation to post-judgment collections and enforcement.",
+    icon: "balance-scale"
+  },
+  {
+    name: "Real Estate Law",
+    description: "Expert guidance and representation for both commercial and residential real estate closings and transactions.",
+    icon: "building"
+  }
+];
+
+const attorneys = [
+  {
+    name: "Michael Baim",
+    title: "Managing Partner",
+    image: "/images/placeholders/attorney-male-1.jpg"
+  },
+  {
+    name: "Patricia Lepak",
+    title: "Chief Compliance Officer",
+    image: "/images/placeholders/attorney-female-1.jpg"
+  },
+  {
+    name: "Brian Berlin",
+    title: "Senior Trial Attorney",
+    image: "/images/placeholders/attorney-male-2.jpg"
+  }
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+  <main>
+    <!-- 1. Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <img src="/images/placeholders/hero-image-chicago.jpg" alt="A panoramic view of the Chicago skyline at dusk." loading="eager" />
+      </div>
+      <div class="hero-content">
+        <div class="container">
+          <h1 class="hero-heading">Expert Legal Representation in Chicago</h1>
+          <p class="hero-body">Providing exceptional legal collection services for banks, financial institutions, manufacturers, and distributors throughout Illinois.</p>
+          <a href="https://www.ckbfirm.com/contact" class="button button-primary">Schedule a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Practice Areas Overview Section -->
+    <section class="practice-areas-overview section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-heading">Dedicated Legal Services</h2>
+          <p class="section-body">Our firm is centered around collections and creditors' rights, with comprehensive services available through all stages of the legal process.</p>
+        </div>
+        <div class="three-column-grid">
+          {practiceAreas.map(area => (
+            <article class="card">
+              <h3 class="card-heading">{area.name}</h3>
+              <p>{area.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Firm Introduction Section -->
+    <section class="firm-introduction">
+      <div class="two-column-layout">
+        <div class="image-column">
+          <img src="/images/placeholders/office-interior-image.jpg" alt="Modern and professional law firm office interior." loading="lazy" />
+        </div>
+        <div class="text-column section-padding">
+          <h2 class="section-heading">Experienced. Focused. Effective.</h2>
+          <p class="section-body">The CKB Firm is a Chicago-based law practice with a focus on providing exceptional legal collection services. We represent a diverse client base in Cook County and the surrounding counties of Lake, DuPage, Kane, and Will, handling matters in all Illinois courts with dedication and expertise.</p>
+          <a href="https://www.ckbfirm.com/about" class="button button-secondary">Learn More About Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Attorneys Overview Section -->
+    <section class="attorneys-overview section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-heading">Meet Our Attorneys</h2>
+          <p class="section-body">Our firm is led by a team of experienced attorneys committed to achieving positive outcomes for our clients.</p>
+        </div>
+        <div class="team-grid">
+          {attorneys.map(attorney => (
+            <div class="team-member-card">
+              <img src={attorney.image} alt={`Portrait of ${attorney.name}`} class="team-member-image" loading="lazy" />
+              <div class="team-member-info">
+                <h3 class="team-member-name">{attorney.name}</h3>
+                <p class="team-member-title">{attorney.title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* General Styles */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-padding {
+    padding: 4rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-heading {
+    font-size: 2.5rem;
+    color: var(--color-secondary, #333E48);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .section-body {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text, #666666);
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+  }
+
+  .button-primary {
+    background-color: var(--color-primary, #B52B2C);
+    color: #ffffff;
+    border: 2px solid var(--color-primary, #B52B2C);
+  }
+
+  .button-primary:hover,
+  .button-primary:focus {
+    background-color: #9e2425; /* Darker primary */
+    border-color: #9e2425;
+  }
+
+  .button-secondary {
+    background-color: transparent;
+    color: var(--color-secondary, #333E48);
+    border: 2px solid var(--color-secondary, #333E48);
+  }
+
+  .button-secondary:hover,
+  .button-secondary:focus {
+    background-color: var(--color-secondary, #333E48);
+    color: #ffffff;
+  }
+
+  /* 1. Hero Section */
+  .hero {
+    position: relative;
+    color: white;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51, 62, 72, 0.7); /* Overlay using secondary color */
+  }
+
+  .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-heading {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hero-body {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.5;
+  }
+
+  /* 2. Practice Areas Overview Section */
+  .practice-areas-overview {
+    background-color: var(--color-background, #F5F5F5);
+  }
+
+  .three-column-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+
+  .card-heading {
+    font-size: 1.5rem;
+    color: var(--color-primary, #B52B2C);
+    margin-bottom: 1rem;
+  }
+
+  /* 3. Firm Introduction Section */
+  .firm-introduction {
+    background-color: #ffffff;
+  }
+  .two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    min-height: 60vh;
+  }
+
+  .image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .text-column {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .text-column .section-heading {
+    text-align: left;
+  }
+  
+  .text-column .section-body {
+    margin-bottom: 2rem;
+  }
+
+  /* 4. Attorneys Overview Section */
+  .attorneys-overview {
+    background-color: var(--color-background, #F5F5F5);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .team-member-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+
+  .team-member-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .team-member-info {
+    padding: 1.5rem;
+  }
+
+  .team-member-name {
+    font-size: 1.5rem;
+    color: var(--color-secondary, #333E48);
+    margin-bottom: 0.5rem;
+  }
+
+  .team-member-title {
+    color: var(--color-primary, #B52B2C);
+    font-weight: 600;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .section-heading {
+      font-size: 2.25rem;
+    }
+    .hero-heading {
+      font-size: 2.75rem;
+    }
+    .two-column-layout {
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding: 3rem 0;
+    }
+    .section-heading {
+      font-size: 2rem;
+    }
+    .hero {
+      min-height: 60vh;
+    }
+    .hero-heading {
+      font-size: 2.25rem;
+    }
+    .hero-body {
+      font-size: 1.125rem;
+    }
+    .two-column-layout {
+      grid-template-columns: 1fr;
+    }
+    .two-column-layout .image-column {
+      order: -1; /* Image appears on top on mobile */
+      height: 300px;
+    }
+    .text-column {
+      text-align: center;
+    }
+    .text-column .section-heading {
+      text-align: center;
+    }
+  }
+</style>

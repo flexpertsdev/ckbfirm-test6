@@ -1,0 +1,84 @@
+/**
+ * ANIMATION SYSTEM
+ * Durations, easing functions, transitions
+ * Respects prefers-reduced-motion
+ */
+
+:root {
+  /* Durations */
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+  --duration-slowest: 750ms;
+
+  /* Easing curves */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Custom easing */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Common transitions */
+  --transition-colors: color var(--duration-base) var(--ease-out),
+                       background-color var(--duration-base) var(--ease-out),
+                       border-color var(--duration-base) var(--ease-out);
+
+  --transition-transform: transform var(--duration-base) var(--ease-smooth);
+  --transition-opacity: opacity var(--duration-base) var(--ease-out);
+  --transition-all: all var(--duration-base) var(--ease-in-out);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 oklch(0% 0 0 / 0.1),
+                 0 1px 2px -1px oklch(0% 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.1),
+               0 2px 4px -2px oklch(0% 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.1),
+               0 4px 6px -4px oklch(0% 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.1),
+               0 8px 10px -6px oklch(0% 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px oklch(0% 0 0 / 0.25);
+
+  /* Colored shadows (for emphasis) */
+  --shadow-primary: 0 8px 16px -4px oklch(from var(--color-primary) l c h / 0.3);
+  --shadow-accent: 0 8px 16px -4px oklch(from var(--color-accent) l c h / 0.3);
+}
+
+/* Dark mode shadows */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
+    --shadow-base: 0 1px 3px 0 oklch(0% 0 0 / 0.4),
+                   0 1px 2px -1px oklch(0% 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.5),
+                 0 2px 4px -2px oklch(0% 0 0 / 0.5);
+    --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.6),
+                 0 4px 6px -4px oklch(0% 0 0 / 0.6);
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+    --duration-slowest: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
